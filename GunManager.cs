@@ -49,17 +49,20 @@ public class GunManager : MonoBehaviour
         {
 
             _index += 1;
-            Destroy(_currentGun.gameObject);
+            Destroy(_currentGun.gameObject);//This can be simplified to Destroy(_currentGun) because it already is a GameObject
+            //There needs to be a check here to be sure that the index is not higher than the (List.Count-1)
+            //A cool way to do this is using the Modulus (%) operator 
+                //Modulus is the remainder from long division For example 1%2 = 1 because 2 does not go into 1 evenly and 1 is leftover, 2%2 = 0 because 2 goes into 2 evenly so there is nothing leftover
+            _index = _index % Guns.Count;//This will make sure that the index never goes above the size of the list
             _activeGun = Instantiate(Guns[_index], GunPos.transform.position, GunPos.transform.rotation);
 
         }
-        if (_index > Guns.Capacity)
+        /*if (_index > Guns.Capacity)//Capacity is not the same as count and can be larger than total amount of items in the list
         {
             _index = 1;
-        }
+        }*/
 
-     
-            _currentGun = Guns[_index];
+        _currentGun = Guns[_index];
             _currentGun.transform.position = GunPos.transform.position;
             _currentGun.transform.rotation = GunPos.transform.rotation;
         
