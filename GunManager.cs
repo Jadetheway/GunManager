@@ -31,9 +31,13 @@ public class GunManager : MonoBehaviour
         //Assign the value of _index
         _index = 0;
         _currentGun = Instantiate(Guns[_index], GunPos.transform.position, GunPos.transform.rotation);
-        _hasAGun = true;
-        _currentGun.transform.position = GunPos.transform.position;
-        _currentGun.transform.rotation = GunPos.transform.rotation;
+        //Add a null check just incase something went wrong
+        if(_currentGun != null )
+            _hasAGun = true;
+
+        //These two lines are taken care of in the Instantiate call
+        /*_currentGun.transform.position = GunPos.transform.position;
+        _currentGun.transform.rotation = GunPos.transform.rotation;*/
     }
 
     // Update is called once per frame
