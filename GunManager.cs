@@ -14,6 +14,7 @@ public class GunManager : MonoBehaviour
     public GameObject StartGun;
     private GameObject _activeGun;
 
+    //This defaults to null if not assigned a value
     int _index;
     private bool _hasAGun;
 
