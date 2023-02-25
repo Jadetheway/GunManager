@@ -31,8 +31,6 @@ public class GunManager : MonoBehaviour
         //Assign the value of _index
         _index = 0;
         _currentGun = Instantiate(Guns[_index], GunPos.transform.position, GunPos.transform.rotation);
-        
-        _currentGun = Guns[_index];
         _hasAGun = true;
         _currentGun.transform.position = GunPos.transform.position;
         _currentGun.transform.rotation = GunPos.transform.rotation;
