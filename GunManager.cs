@@ -23,9 +23,15 @@ public class GunManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //This needs to be reordered.
+        //_index is null before it is assigned a value of 0 so we need to rearange this
+
+        //Add a gun to the list of guns
         Guns.Add(StartGun);
-        _currentGun = Instantiate(Guns[_index], GunPos.transform.position, GunPos.transform.rotation);
+        //Assign the value of _index
         _index = 0;
+        _currentGun = Instantiate(Guns[_index], GunPos.transform.position, GunPos.transform.rotation);
+        
         _currentGun = Guns[_index];
         _hasAGun = true;
         _currentGun.transform.position = GunPos.transform.position;
