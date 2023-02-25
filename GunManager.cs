@@ -62,6 +62,7 @@ public class GunManager : MonoBehaviour
             _index = 1;
         }*/
 
+        //Unless you specifically want _activeGun and _currentGun to be different. this could be simplified to _currentGun = _activeGun
         _currentGun = Guns[_index];
             _currentGun.transform.position = GunPos.transform.position;
             _currentGun.transform.rotation = GunPos.transform.rotation;
@@ -69,11 +70,13 @@ public class GunManager : MonoBehaviour
 
         Debug.Log(_index);
     }
-    public void NewObjectCollected(GameObject ObjectCollected)
+    public void NewObjectCollected(GameObject ObjectCollected)//The Microsoft naming convention is camelCase for paramaters. so objectCollected rather than uppercase O but it's okay as long as you stay consistent
     {
-        Guns.Add(ObjectCollected.gameObject);
-        Destroy(_currentGun.gameObject);
+        Guns.Add(ObjectCollected.gameObject);//This can be simplified to Guns.Add(ObjectCollected) because it already is a GameObject
+        Destroy(_currentGun.gameObject);//This can be simplified to _currentGun because it already is a GameObject
         _index += 1;
+        //Should have an index check to be sure that you aren't going above the amount of items in the list
+        _index = _index % Guns.Count;
         _currentGun = Instantiate(Guns[_index], GunPos.transform.position, GunPos.transform.rotation);
     }
 }
